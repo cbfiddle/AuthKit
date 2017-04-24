@@ -1,0 +1,55 @@
+These tests are designed to run in a test directory created for that purpose.
+Tests will not work if the test directory is on an external drive with ignore permissions set.
+To avoid this problem, create the test directory on the system volume.
+
+Copy and paste individual commands into a Terminal window.
+
+See Docs/examples.html for explanations and expected output.
+Note that the commands in that file are obsolete.
+
+# Setup (change the JARDIR path as needed to point to a directory containing AuthKit.jar and libauthkit.dylib)
+JARDIR=path/to/JARs
+alias testauth='java -Djava.library.path=$JARDIR -Dauthkit.imp=glguerin.authkit.imp.macosx.MacOSXAuthorization -cp $JARDIR/AuthKit.jar app.authkit.test.TestAuth'
+
+# Example 1
+testauth : /usr/bin/id : see
+
+# Example 2
+testauth : pre system.privilege.admin : zzz : /usr/bin/id : see
+
+# Example 3
+testauth /usr/bin/id : see : '#' : /usr/bin/id : see
+
+# Example 4
+testauth : see TRIAL : au+ TRIAL : see TRIAL : '#' : zzz : au+ TRIAL : see TRIAL
+
+# Example 5
+testauth : see TRIAL : au- TRIAL : '##' : see TRIAL
+
+# Example 7
+testauth : au+ system.privilege.admin : see : /bin/mkdir -p ./rooted : /bin/chmod 755 ./rooted : /usr/sbin/chown 0:0 ./rooted : /bin/ls -ld ./rooted
+
+# Example 8
+testauth : put : @ /usr/bin/tee rooted/t1 : /usr/bin/hexdump rooted/t1 : zzz 1
+
+# Example 9
+testauth : put \
+  : au+ system.privilege.admin PRIV \
+  : see system.privilege.admin PRIV \
+  : JAVA -Djava.library.path=$JARDIR -cp $JARDIR/AuthKit.jar \
+    -Dauthkit.imp=glguerin.authkit.imp.macosx.MacOSXAuthorization \
+    -Dattach=. \
+    -Dout.1=rooted/priv \
+    app.authkit.test.TestAttach system.privilege.admin PRIV OTHER \
+  : see system.privilege.admin PRIV OTHER
+
+# Example 10
+testauth : put \
+  : au+ system.privilege.admin PIPED \
+  : @ JAVA -Djava.library.path=$JARDIR -cp $JARDIR/AuthKit.jar \
+    -Dauthkit.imp=glguerin.authkit.imp.macosx.MacOSXAuthorization \
+    -Dattach=@ \
+    -Dout.1=rooted/piped \
+    app.authkit.test.TestAttach system.privilege.admin PIPED OTHER \
+  : see system.privilege.admin PIPED OTHER
+

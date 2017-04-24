@@ -1,0 +1,7 @@
+.DS_Store
+/.idea
+/API
+/out
+/JARs/AuthKit.jar
+/JARs/libauthkit.dylib
+/AuthKit.iml
