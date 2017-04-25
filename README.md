@@ -27,13 +27,13 @@ AuthKit has been built using JDK 8 and tested on macOS 10.12 (Sierra).
 
 Tests
 -----
-The tests described in the [original documentation](./Docs/examples.html) are out of date.
+The tests described in the [original documentation](https://cbfiddle.github.io/AuthKit//Docs/examples.html) are out of date.
 Read the document to understand what the tests do and what the expected output should be,
-but use the [updated command snippets](./tests.txt) instead.
+but use the [updated command snippets](https://cbfiddle.github.io/AuthKit/tests.txt) instead.
 
 Documentation
 -------------
-* [License](artistic-license.html) - The license that governs the use of this software
-* [Documentation](Docs/index.html) - The original documentation
-* [API](API/packages.html) - The original API documentation
-* [Sources](Source/about-the-source.html) - Information about the sources
+* [License](https://cbfiddle.github.io/AuthKit/artistic-license.html) - The license that governs the use of this software
+* [Documentation](https://cbfiddle.github.io/AuthKit/Docs/index.html) - The original documentation
+* [API](https://cbfiddle.github.io/AuthKit/API/packages.html) - The original API documentation
+* [Sources](https://cbfiddle.github.io/AuthKit/Source/about-the-source.html) - Information about the sources
